@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">GBAndroidBase</string>
+    <string name="city_name">Moscow,</string>
+    <string name="country_name">Russia</string>
+    <string name="time_example" translatable="false">12:00</string>
+    <string name="temperature_example" translatable="false">22°</string>
+    <string name="weather_icon_desc">Weather icon</string>
+    <string name="weather_label_example">Cloudy</string>
+    <string name="day_label_example">Monday, 21 Dec</string>
+    <string name="today_label">Today</string>
+    <string name="next_7_days_label">Next 7 days</string>
 </resources>
