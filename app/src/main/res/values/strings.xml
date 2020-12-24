@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">GBAndroidBase</string>
-    <string name="city_name">Moscow,</string>
-    <string name="country_name">Russia</string>
+    <string name="city_name_with_country">Moscow, Russia</string>
     <string name="time_example" translatable="false">12:00</string>
     <string name="temperature_example" translatable="false">22°</string>
     <string name="weather_icon_desc">Weather icon</string>
@@ -9,4 +8,22 @@
     <string name="day_label_example">Monday, 21 Dec</string>
     <string name="today_label">Today</string>
     <string name="next_7_days_label">Next 7 days</string>
+    <string name="show_additional_information">Show additional information</string>
+    <string name="settlement_name_hint">Name of the settlement</string>
+    <string name="settlement_selection">Choice of settlement</string>
+    <string name="settings_button">Settings button</string>
+    <string name="settings_title">Settings</string>
+    <string name="enable_dark_theme">Enable dark theme</string>
+
+    <string-array name="cities">
+        <item>Moscow</item>
+        <item>Hong Kong</item>
+        <item>Bangkok</item>
+        <item>Macao</item>
+        <item>Singapore</item>
+        <item>London</item>
+        <item>Paris</item>
+        <item>Dubai</item>
+        <item>Delhi</item>
+    </string-array>
 </resources>
