@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GBAndroidBase</string>
+    <string name="city_name">Москва,</string>
+    <string name="country_name">Россия</string>
+    <string name="weather_icon_desc">Иконка погоды</string>
+    <string name="weather_label_example">Облачно</string>
+    <string name="day_label_example">Понедельник, 21 декабря</string>
+    <string name="today_label">Сегодня</string>
+    <string name="next_7_days_label">Следующие 7 дней</string>
+</resources>
