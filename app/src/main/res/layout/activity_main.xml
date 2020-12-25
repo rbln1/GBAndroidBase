@@ -5,35 +5,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/indent_32"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity" >
+
+    <Button
+        android:id="@+id/btnCityName"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/city_name_with_country"
+        android:textSize="@dimen/text_size_24"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnSettings"
+        android:layout_width="@dimen/main_settings_button_size"
+        android:layout_height="@dimen/main_settings_button_size"
+        android:src="@drawable/ic_settings"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        app:layout_constraintBottom_toBottomOf="@+id/btnCityName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnCityName"
+        android:contentDescription="@string/settings_button" />
 
     <TextView
         android:id="@+id/tvCityName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/city_name"
+        android:text="@string/city_name_with_country"
         android:textStyle="bold"
         android:textSize="@dimen/text_size_24"
         android:textColor="@color/black"
+        android:visibility="gone"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
-
-    <TextView
-        android:id="@+id/tvCountryName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/indent_8"
-        android:text="@string/country_name"
-        android:textSize="@dimen/text_size_24"
-        app:layout_constraintTop_toTopOf="@id/tvCityName"
-        app:layout_constraintStart_toEndOf="@id/tvCityName"/>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/indent_32"
         android:layout_marginBottom="@dimen/indent_32"
-        app:layout_constraintTop_toBottomOf="@id/tvCityName"
+        app:layout_constraintTop_toBottomOf="@id/btnCityName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/tvToday"
@@ -100,19 +113,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" >
 
-        <include layout="@layout/item_hour" />
-        <include layout="@layout/item_hour" />
-        <include layout="@layout/item_hour" />
-        <include layout="@layout/item_hour" />
-        <include layout="@layout/item_hour" />
-        <include layout="@layout/item_hour" />
-        <include layout="@layout/item_hour" />
+        <include layout="@layout/item_time_weather" />
+        <include layout="@layout/item_time_weather" />
+        <include layout="@layout/item_time_weather" />
+        <include layout="@layout/item_time_weather" />
+        <include layout="@layout/item_time_weather" />
+        <include layout="@layout/item_time_weather" />
+        <include layout="@layout/item_time_weather" />
 
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTimeWeather"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:listitem="@layout/item_time_weather" />
 
     <TextView
         android:id="@+id/tvToday"
@@ -123,8 +148,8 @@
         android:textColor="@color/black"
         android:textStyle="bold"
         android:text="@string/today_label"
-        app:layout_constraintBottom_toTopOf="@id/llDays"
-        app:layout_constraintStart_toStartOf="@id/llDays" />
+        app:layout_constraintBottom_toTopOf="@id/rvTimeWeather"
+        app:layout_constraintStart_toStartOf="@id/rvTimeWeather" />
 
     <TextView
         android:id="@+id/tvNextDays"
@@ -134,7 +159,7 @@
         android:textSize="@dimen/text_size_16"
         android:textStyle="bold"
         android:text="@string/next_7_days_label"
-        app:layout_constraintBottom_toTopOf="@id/llDays"
-        app:layout_constraintEnd_toEndOf="@id/llDays" />
+        app:layout_constraintBottom_toTopOf="@id/rvTimeWeather"
+        app:layout_constraintEnd_toEndOf="@id/rvTimeWeather" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
