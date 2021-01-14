@@ -30,20 +30,20 @@
                 android:layout_width="@dimen/main_weather_icon_size_land"
                 android:layout_height="@dimen/main_weather_icon_size_land"
                 android:src="@drawable/ic_cloud"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tvMainWeatherLabel"
+                android:id="@+id/tvWeatherTypeLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/indent_32"
                 android:text="@string/weather_label_example"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_32"
                 android:textStyle="bold"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ivMainWeatherIcon" />
+                app:layout_constraintEnd_toStartOf="@+id/ivMainWeatherIcon" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -52,8 +52,8 @@
                 android:textColor="@color/primarySecondTextColor"
                 android:textSize="@dimen/text_size_16"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@id/tvMainWeatherLabel"
-                app:layout_constraintTop_toBottomOf="@id/tvMainWeatherLabel" />
+                app:layout_constraintEnd_toEndOf="@id/tvWeatherTypeLabel"
+                app:layout_constraintTop_toBottomOf="@id/tvWeatherTypeLabel" />
 
             <TextView
                 android:id="@+id/tvMainTemperatureLabel"
@@ -64,7 +64,6 @@
                 android:textSize="@dimen/text_size_72"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -128,5 +127,13 @@
         android:text="@string/next_7_days_label"
         app:layout_constraintBottom_toTopOf="@id/rvTimeWeather"
         app:layout_constraintEnd_toEndOf="@id/rvTimeWeather" />
+
+    <Button
+        android:id="@+id/btnOpenInYandex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/open_in_yandex"
+        app:layout_constraintStart_toStartOf="@+id/btnCityName"
+        app:layout_constraintTop_toBottomOf="@+id/btnCityName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
