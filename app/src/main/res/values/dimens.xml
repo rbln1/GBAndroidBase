@@ -3,6 +3,7 @@
 
     <dimen name="indent_8">8dp</dimen>
     <dimen name="indent_16">16dp</dimen>
+    <dimen name="indent_24">24dp</dimen>
     <dimen name="indent_32">32dp</dimen>
 
     <dimen name="text_size_24">24sp</dimen>
@@ -13,6 +14,7 @@
     <dimen name="main_card_corner_radius">16dp</dimen>
 
     <dimen name="main_weather_icon_size">96dp</dimen>
+    <dimen name="main_weather_icon_size_land">72dp</dimen>
 
     <dimen name="item_hour_icon_size">32dp</dimen>
     <dimen name="item_hour_width">48dp</dimen>
