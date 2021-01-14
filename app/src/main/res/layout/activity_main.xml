@@ -30,45 +30,44 @@
         android:contentDescription="@string/settings_button" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cvMainCard"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/indent_32"
-        android:layout_marginBottom="@dimen/indent_32"
+        android:layout_marginBottom="@dimen/indent_16"
         app:layout_constraintTop_toBottomOf="@id/btnCityName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tvToday"
+        app:layout_constraintBottom_toTopOf="@id/btnOpenInYandex"
         app:cardBackgroundColor="@color/primaryColor"
         app:cardCornerRadius="@dimen/main_card_corner_radius">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:padding="@dimen/indent_32">
 
             <ImageView
                 android:id="@+id/ivMainWeatherIcon"
                 android:layout_width="@dimen/main_weather_icon_size"
                 android:layout_height="@dimen/main_weather_icon_size"
-                android:layout_marginTop="@dimen/indent_32"
                 android:src="@drawable/ic_cloud"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tvMainWeatherLabel"
+                android:id="@+id/tvWeatherTypeLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/weather_label_example"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_32"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@id/tvMainTemperatureLabel"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/ivMainWeatherIcon" />
 
             <TextView
+                android:id="@+id/tvDateOfWeatherLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/day_label_example"
@@ -76,25 +75,31 @@
                 android:textSize="@dimen/text_size_16"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvMainWeatherLabel" />
+                app:layout_constraintTop_toBottomOf="@id/tvWeatherTypeLabel" />
 
             <TextView
                 android:id="@+id/tvMainTemperatureLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/indent_32"
                 android:text="@string/temperature_example"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_72"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btnOpenInYandex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/open_in_yandex"
+        app:layout_constraintBottom_toTopOf="@id/tvToday"
+        app:layout_constraintEnd_toEndOf="@+id/cvMainCard"
+        app:layout_constraintStart_toStartOf="@+id/btnCityName" />
 
     <LinearLayout
         android:id="@+id/llDays"

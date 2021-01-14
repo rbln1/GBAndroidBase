@@ -15,15 +15,14 @@
     <string name="settings_title">Settings</string>
     <string name="enable_dark_theme">Enable dark theme</string>
 
-    <string-array name="cities">
-        <item>Moscow</item>
-        <item>Hong Kong</item>
-        <item>Bangkok</item>
-        <item>Macao</item>
-        <item>Singapore</item>
-        <item>London</item>
-        <item>Paris</item>
-        <item>Dubai</item>
-        <item>Delhi</item>
-    </string-array>
+    <string name="city_moscow">Moscow</string>
+    <string name="city_hong_kong">Hong Kong</string>
+    <string name="city_bangkok">Bangkok</string>
+    <string name="city_macao">Macao</string>
+    <string name="city_singapore">Singapore</string>
+    <string name="city_london">London</string>
+    <string name="city_paris">Paris</string>
+    <string name="city_dubai">Dubai</string>
+    <string name="city_delhi">Delhi</string>
+    <string name="open_in_yandex">Open in Yandex</string>
 </resources>

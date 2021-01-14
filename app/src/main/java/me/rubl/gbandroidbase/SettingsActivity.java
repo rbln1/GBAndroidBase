@@ -30,7 +30,9 @@ public class SettingsActivity extends AppCompatActivity {
         int nightModeFlags = getResources().getConfiguration().uiMode &
                         Configuration.UI_MODE_NIGHT_MASK;
 
-        cbDarkTheme.setChecked(nightModeFlags != Configuration.UI_MODE_NIGHT_NO && nightModeFlags != Configuration.UI_MODE_NIGHT_UNDEFINED);
+        cbDarkTheme.setChecked(nightModeFlags
+                != Configuration.UI_MODE_NIGHT_NO && nightModeFlags
+                != Configuration.UI_MODE_NIGHT_UNDEFINED);
 
         cbDarkTheme.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked){

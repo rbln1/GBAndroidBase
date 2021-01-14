@@ -1,5 +1,6 @@
 package me.rubl.gbandroidbase;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +11,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import me.rubl.gbandroidbase.entity.City;
+
 public class CitiesAdapter extends RecyclerView.Adapter<CitiesAdapter.ViewHolder>{
 
-    ArrayList<String> citiesList;
+    private final Context context;
+    private ArrayList<City> citiesList;
+    private final OnItemClickCityRecyclerListener clickListener;
 
-    public CitiesAdapter(ArrayList<String> citiesList) {
+    public CitiesAdapter(Context context, ArrayList<City> citiesList, OnItemClickCityRecyclerListener clickListener) {
         this.citiesList = citiesList;
+        this.context = context;
+        this.clickListener = clickListener;
     }
 
     @NonNull
@@ -28,7 +35,7 @@ public class CitiesAdapter extends RecyclerView.Adapter<CitiesAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.tvName.setText(citiesList.get(position));
+        holder.tvName.setText(context.getResources().getString(citiesList.get(position).getNameResourceId()));
     }
 
     @Override
@@ -36,18 +43,24 @@ public class CitiesAdapter extends RecyclerView.Adapter<CitiesAdapter.ViewHolder
         return citiesList.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder
-    {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tvName;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
+            itemView.setOnClickListener(this);
             tvName = itemView.findViewById(android.R.id.text1);
+        }
+
+        @Override
+        public void onClick(View v) {
+            int position = getAdapterPosition();
+            clickListener.onItemClick(citiesList.get(position));
         }
     }
 
-    public void filterList(ArrayList<String> filteredList) {
+    public void filterList(ArrayList<City> filteredList) {
         citiesList = filteredList;
         notifyDataSetChanged();
     }
