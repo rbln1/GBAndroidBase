@@ -1,14 +1,15 @@
-package me.rubl.gbandroidbase;
+package me.rubl.gbandroidbase.activities;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
+
+import me.rubl.gbandroidbase.R;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -30,7 +31,9 @@ public class SettingsActivity extends AppCompatActivity {
         int nightModeFlags = getResources().getConfiguration().uiMode &
                         Configuration.UI_MODE_NIGHT_MASK;
 
-        cbDarkTheme.setChecked(nightModeFlags != Configuration.UI_MODE_NIGHT_NO && nightModeFlags != Configuration.UI_MODE_NIGHT_UNDEFINED);
+        cbDarkTheme.setChecked(nightModeFlags
+                != Configuration.UI_MODE_NIGHT_NO && nightModeFlags
+                != Configuration.UI_MODE_NIGHT_UNDEFINED);
 
         cbDarkTheme.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked){

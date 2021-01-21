@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/indent_16"
+    tools:context=".activities.MainActivity" >
+
+    <Button
+        android:id="@+id/btnCityName"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintHorizontal_weight="8"
+        android:layout_marginEnd="@dimen/indent_16"
+        android:text="@string/city_name_with_country"
+        android:textSize="@dimen/text_size_24"
+        android:textStyle="bold"
+        android:maxLength="16"
+        app:layout_constraintEnd_toStartOf="@+id/btnSettings"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnSettings"
+        android:layout_width="@dimen/main_settings_button_size"
+        android:layout_height="@dimen/main_settings_button_size"
+        app:layout_constraintHorizontal_weight="1"
+        android:src="@drawable/ic_settings"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnCityName"
+        android:contentDescription="@string/settings_button" />
+
+    <ImageView
+        android:id="@+id/ivMainWeatherIcon"
+        android:layout_width="@dimen/main_weather_icon_size"
+        android:layout_height="@dimen/main_weather_icon_size"
+        android:src="@drawable/ic_cloudy"
+        app:layout_constraintBottom_toTopOf="@+id/tvWeatherTypeLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvWeatherTypeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/weather_type_cloudy"
+        android:textColor="@color/primarySecondTextColor"
+        android:textSize="@dimen/text_size_32"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/btnCityName"
+        app:layout_constraintBottom_toTopOf="@id/rvWeatherForWeek"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvDateOfWeatherLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/day_label_example"
+        android:textColor="@color/primarySecondTextColor"
+        android:textSize="@dimen/text_size_16"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvWeatherTypeLabel" />
+
+    <TextView
+        android:id="@+id/tvMainTemperatureLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/temperature_example"
+        android:textColor="@color/primaryColor"
+        android:textSize="@dimen/text_size_72"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDateOfWeatherLabel" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvWeatherForWeek"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/indent_8"
+        app:layout_constraintBottom_toTopOf="@id/btnShowDayDetails" />
+
+    <Button
+        android:id="@+id/btnShowDayDetails"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/indent_16"
+        app:layout_constraintHorizontal_weight="9"
+        android:text="@string/show_day_details"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnOpenInYandex" />
+
+    <ImageButton
+        android:id="@+id/btnOpenInYandex"
+        android:layout_width="@dimen/yandex_weather_button_size"
+        android:layout_height="@dimen/yandex_weather_button_size"
+        android:src="@drawable/ic_yandex"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnShowDayDetails" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
