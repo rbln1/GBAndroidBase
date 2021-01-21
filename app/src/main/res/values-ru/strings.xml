@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">GBAndroidBase</string>
-    <string name="city_name_with_country">Москва, Россия</string>
+    <string name="city_name_with_country">Москва, Россия sdf asdf asdf asdf asdf </string>
     <string name="weather_icon_desc">Иконка погоды</string>
-    <string name="weather_label_example">Облачно</string>
     <string name="day_label_example">Понедельник,\n21 декабря</string>
     <string name="today_label">Сегодня</string>
     <string name="next_7_days_label">Следующие 7 дней</string>
@@ -13,6 +12,9 @@
     <string name="settings_button">Кнопка настроек</string>
     <string name="settings_title">Настройки</string>
     <string name="enable_dark_theme">Включить темную тему</string>
+    <string name="open_in_yandex">Открыть в Яндексе</string>
+    <string name="detailed_information_label">Детальная информация</string>
+    <string name="show_day_details">Show details</string>
 
     <string name="city_moscow">Москва</string>
     <string name="city_hong_kong">Гонконг</string>
@@ -23,5 +25,8 @@
     <string name="city_paris">Париж</string>
     <string name="city_dubai">Дубай</string>
     <string name="city_delhi">Дели</string>
-    <string name="open_in_yandex">Открыть в Яндексе</string>
+
+    <string name="weather_type_cloudy">Облачно</string>
+    <string name="weather_type_rainy">Дождь</string>
+    <string name="weather_type_sunny">Солнечно</string>
 </resources>

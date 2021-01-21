@@ -1,4 +1,4 @@
-package me.rubl.gbandroidbase;
+package me.rubl.gbandroidbase.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,7 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import me.rubl.gbandroidbase.entity.City;
+import me.rubl.gbandroidbase.listeners.OnItemClickCityRecyclerListener;
+import me.rubl.gbandroidbase.entities.City;
 
 public class CitiesAdapter extends RecyclerView.Adapter<CitiesAdapter.ViewHolder>{
 

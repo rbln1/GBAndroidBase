@@ -1,4 +1,4 @@
-package me.rubl.gbandroidbase;
+package me.rubl.gbandroidbase.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import me.rubl.gbandroidbase.entity.City;
+import me.rubl.gbandroidbase.adapters.CitiesAdapter;
+import me.rubl.gbandroidbase.listeners.OnItemClickCityRecyclerListener;
+import me.rubl.gbandroidbase.R;
+import me.rubl.gbandroidbase.entities.City;
 
 public class CitiesActivity extends AppCompatActivity implements OnItemClickCityRecyclerListener {
 
@@ -41,7 +44,8 @@ public class CitiesActivity extends AppCompatActivity implements OnItemClickCity
         citiesList = City.getMockCities();
         citiesAdapter = new CitiesAdapter(this, citiesList, this);
 
-        LinearLayoutManager llManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
+        LinearLayoutManager llManager =
+                new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         rvCities.setLayoutManager(llManager);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(
                 rvCities.getContext(),
