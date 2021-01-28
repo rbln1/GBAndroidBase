@@ -16,16 +16,39 @@ public class Weather implements Parcelable {
     private int temperatureInC;
     private Date date;
 
-    public Weather(WeatherType type, int temperatureInC, Date date) {
+    // Additional
+    private double wildSpeed;
+    private int humidity;
+    private int pressure;
+
+    public Weather(WeatherType type, int temperatureInC, Date date,
+                   double wildSpeed, int humidity, int pressure) {
         this.type = type;
         this.temperatureInC = temperatureInC;
         this.date = date;
+        this.wildSpeed = wildSpeed;
+        this.humidity = humidity;
+        this.pressure = pressure;
     }
 
     protected Weather(Parcel in) {
-        type = WeatherType.valueOf(in.readString());
         temperatureInC = in.readInt();
-        date = new Date(in.readLong());
+        wildSpeed = in.readDouble();
+        humidity = in.readInt();
+        pressure = in.readInt();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(temperatureInC);
+        dest.writeDouble(wildSpeed);
+        dest.writeInt(humidity);
+        dest.writeInt(pressure);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<Weather> CREATOR = new Creator<Weather>() {
@@ -64,6 +87,30 @@ public class Weather implements Parcelable {
         this.date = date;
     }
 
+    public double getWildSpeed() {
+        return wildSpeed;
+    }
+
+    public void setWildSpeed(double wildSpeed) {
+        this.wildSpeed = wildSpeed;
+    }
+
+    public int getHumidity() {
+        return humidity;
+    }
+
+    public void setHumidity(int humidity) {
+        this.humidity = humidity;
+    }
+
+    public int getPressure() {
+        return pressure;
+    }
+
+    public void setPressure(int pressure) {
+        this.pressure = pressure;
+    }
+
     public static Weather getMockCurrentWeather(int averageTemperatureInC) {
         return getMockWeather(new Date(), averageTemperatureInC);
     }
@@ -89,7 +136,14 @@ public class Weather implements Parcelable {
                         * ((averageTemperatureInC + 5) - (averageTemperatureInC - 5)))
                         + (averageTemperatureInC - 5));
 
-        return new Weather(type, temperatureInC, date);
+        // скорость ветра - дабл
+        double wildSpeed = Math.random() * 10;
+        // влажность - инт
+        int humidity = (int) (Math.random() * 100);
+        // давление - инт
+        int pressure = (int) (Math.random() * 1000);
+
+        return new Weather(type, temperatureInC, date, wildSpeed, humidity, pressure);
     }
 
     public static Weather[] getMockDetailsWeatherForDay(Date date) {
@@ -105,7 +159,6 @@ public class Weather implements Parcelable {
     public static Weather[] getMockWeatherForWeek(Date date) {
         Weather[] weatherForWeek = new Weather[7];
 
-        Random random = new Random();
         Date startWeek = subtractDays(date, 3);
 
         for (int i = 0; i < weatherForWeek.length; i++) {
@@ -129,17 +182,5 @@ public class Weather implements Parcelable {
         calendar.add(Calendar.DATE, -count);
 
         return calendar.getTime();
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.type.name());
-        dest.writeInt(temperatureInC);
-        dest.writeLong(date.getTime());
     }
 }

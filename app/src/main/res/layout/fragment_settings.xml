@@ -10,13 +10,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <CheckBox
+    <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/cbDarkTheme"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/indent_8"
+        android:layout_marginTop="0dp"
         android:text="@string/enable_dark_theme"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/cbShowDetails"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/indent_8"
+        android:layout_marginTop="0dp"
+        android:checked="true"
+        android:text="@string/weather_show_details"
+        app:layout_constraintTop_toBottomOf="@id/cbDarkTheme"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

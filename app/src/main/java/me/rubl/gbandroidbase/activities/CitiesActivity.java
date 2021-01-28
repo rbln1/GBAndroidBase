@@ -1,36 +1,30 @@
 package me.rubl.gbandroidbase.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import com.squareup.otto.Subscribe;
 
-import me.rubl.gbandroidbase.adapters.CitiesAdapter;
-import me.rubl.gbandroidbase.listeners.OnItemClickCityRecyclerListener;
 import me.rubl.gbandroidbase.R;
-import me.rubl.gbandroidbase.entities.City;
+import me.rubl.gbandroidbase.core.Settings;
+import me.rubl.gbandroidbase.events.BusProvider;
+import me.rubl.gbandroidbase.events.ChangeThemeEvent;
+import me.rubl.gbandroidbase.events.CityChangedEvent;
 
-public class CitiesActivity extends AppCompatActivity implements OnItemClickCityRecyclerListener {
+public class CitiesActivity extends AppCompatActivity {
 
     Toolbar toolbar;
-    RecyclerView rvCities;
-    EditText etSearchCityName;
-
-    CitiesAdapter citiesAdapter;
-    ArrayList<City> citiesList;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        if (Settings.getInstance().isDarkTheme()) {
+            setTheme(R.style.Theme_GBAndroidBase_Dark);
+        } else {
+            setTheme(R.style.Theme_GBAndroidBase);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cities);
 
@@ -40,56 +34,18 @@ public class CitiesActivity extends AppCompatActivity implements OnItemClickCity
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-        citiesList = City.getMockCities();
-        citiesAdapter = new CitiesAdapter(this, citiesList, this);
-
-        LinearLayoutManager llManager =
-                new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
-        rvCities.setLayoutManager(llManager);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(
-                rvCities.getContext(),
-                llManager.getOrientation()
-        );
-        rvCities.addItemDecoration(dividerItemDecoration);
-        rvCities.setAdapter(citiesAdapter);
-
-        etSearchCityName.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) { }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                filter(s.toString());
-            }
-        });
-    }
-
-    private void filter(String text) {
-        ArrayList<City> filteredList = new ArrayList<>();
-
-        for (City city : citiesList) {
-            String cityName = this.getResources().getString(city.getNameResourceId());
-            if (cityName.toLowerCase().contains(text.toLowerCase())) {
-                filteredList.add(city);
-            }
-        }
-
-        citiesAdapter.filterList(filteredList);
     }
 
     private void findViews() {
         toolbar = findViewById(R.id.toolbar);
-        rvCities = findViewById(R.id.rvCities);
-        etSearchCityName = findViewById(R.id.etCityName);
     }
 
-    @Override
-    public void onBackPressed() {
+    @Subscribe public void onCityChanged(CityChangedEvent event) {
         finish();
+    }
+
+    @Subscribe public void onThemeChanged(ChangeThemeEvent event) {
+        recreate();
     }
 
     @Override
@@ -99,10 +55,16 @@ public class CitiesActivity extends AppCompatActivity implements OnItemClickCity
     }
 
     @Override
-    public void onItemClick(City city) {
-        Intent result = new Intent();
-        result.putExtra(City.ARGUMENT_KEY, city);
-        setResult(RESULT_OK, result);
-        finish();
+    public void onResume() {
+        super.onResume();
+
+        BusProvider.getInstance().register(this);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        BusProvider.getInstance().unregister(this);
     }
 }

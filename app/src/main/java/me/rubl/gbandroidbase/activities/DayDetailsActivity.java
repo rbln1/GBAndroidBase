@@ -9,8 +9,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 
+import com.squareup.otto.Subscribe;
+
 import me.rubl.gbandroidbase.R;
+import me.rubl.gbandroidbase.core.Settings;
 import me.rubl.gbandroidbase.entities.City;
+import me.rubl.gbandroidbase.events.BusProvider;
+import me.rubl.gbandroidbase.events.ChangeThemeEvent;
 import me.rubl.gbandroidbase.fragments.DayDetailsFragment;
 
 import static me.rubl.gbandroidbase.fragments.DayDetailsFragment.CITY_FOR_DAY_DETAILS_KEY;
@@ -23,6 +28,11 @@ public class DayDetailsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        if (Settings.getInstance().isDarkTheme()) {
+            setTheme(R.style.Theme_GBAndroidBase_Dark);
+        } else {
+            setTheme(R.style.Theme_GBAndroidBase);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_day_details);
 
@@ -51,7 +61,6 @@ public class DayDetailsActivity extends AppCompatActivity {
             } else {
                 finish();
             }
-
         }
     }
 
@@ -69,5 +78,24 @@ public class DayDetailsActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    @Subscribe
+    public void onThemeChanged(ChangeThemeEvent event) {
+        recreate();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        BusProvider.getInstance().register(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        BusProvider.getInstance().unregister(this);
     }
 }

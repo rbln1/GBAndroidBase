@@ -50,7 +50,6 @@ public class WeatherForWeekAdapter extends RecyclerView.Adapter<WeatherForWeekAd
         }
 
         holder.tvItemTime.setText(sdf.format(weather.getDate()));
-
         holder.tvItemTemperature.setText(String.format("%d°", weather.getTemperatureInC()));
     }
 

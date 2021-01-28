@@ -1,73 +1,53 @@
 package me.rubl.gbandroidbase.activities;
 
-import android.content.res.Configuration;
 import android.os.Bundle;
-import android.widget.FrameLayout;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.squareup.otto.Subscribe;
 
 import me.rubl.gbandroidbase.R;
-import me.rubl.gbandroidbase.entities.City;
-import me.rubl.gbandroidbase.fragments.DayDetailsFragment;
-import me.rubl.gbandroidbase.fragments.MainFragment;
-
-import static me.rubl.gbandroidbase.fragments.DayDetailsFragment.CITY_FOR_DAY_DETAILS_KEY;
+import me.rubl.gbandroidbase.core.Settings;
+import me.rubl.gbandroidbase.events.BusProvider;
+import me.rubl.gbandroidbase.events.ChangeThemeEvent;
 
 public class MainActivity extends AppCompatActivity {
 
-    FrameLayout mainContainer;
-    FrameLayout additionalInfoContainer;
-
-    FragmentManager fragmentManager;
-
-    City currentCity;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if (Settings.getInstance().isDarkTheme()) {
+            setTheme(R.style.Theme_GBAndroidBase_Dark);
+        } else {
+            setTheme(R.style.Theme_GBAndroidBase);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        currentCity = City.getMockCity();
+        BottomNavigationView navView = findViewById(R.id.mainNavigationView);
+        NavController navController =
+                Navigation.findNavController(this, R.id.navHostFragment);
+        NavigationUI.setupWithNavController(navView, navController);
+    }
 
-        mainContainer = findViewById(R.id.mainContainer);
-
-        MainFragment fragment = new MainFragment();
-
-        fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.mainContainer, fragment)
-                .commit();
-
-        if (getResources().getConfiguration().orientation
-                == Configuration.ORIENTATION_LANDSCAPE) {
-            additionalInfoContainer = findViewById(R.id.additionalInfoContainer);
-
-            DayDetailsFragment detailsFragment = new DayDetailsFragment();
-            Bundle args = new Bundle();
-            args.putParcelable(CITY_FOR_DAY_DETAILS_KEY, currentCity);
-            detailsFragment.setArguments(args);
-
-            fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.additionalInfoContainer, detailsFragment)
-                    .commit();
-        }
+    @Subscribe public void onThemeChanged(ChangeThemeEvent event) {
+        recreate();
     }
 
     @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
+    protected void onResume() {
+        super.onResume();
 
-        outState.putParcelable(City.ARGUMENT_KEY, currentCity);
+        BusProvider.getInstance().register(this);
     }
 
     @Override
-    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
+    protected void onPause() {
+        super.onPause();
 
-        City tmpCity = savedInstanceState.getParcelable(City.ARGUMENT_KEY);
-        if (tmpCity != null) currentCity = tmpCity;
+        BusProvider.getInstance().unregister(this);
     }
 }

@@ -46,7 +46,6 @@ public class WeatherForDayAdapter extends RecyclerView.Adapter<WeatherForDayAdap
         }
 
         holder.tvItemTime.setText(String.format("%d:00", position));
-
         holder.tvItemTemperature.setText(String.format("%d°", weather.getTemperatureInC()));
     }
 

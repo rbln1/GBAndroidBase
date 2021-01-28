@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import me.rubl.gbandroidbase.R;
 import me.rubl.gbandroidbase.listeners.OnItemClickCityRecyclerListener;
 import me.rubl.gbandroidbase.entities.City;
 
@@ -20,7 +21,8 @@ public class CitiesAdapter extends RecyclerView.Adapter<CitiesAdapter.ViewHolder
     private ArrayList<City> citiesList;
     private final OnItemClickCityRecyclerListener clickListener;
 
-    public CitiesAdapter(Context context, ArrayList<City> citiesList, OnItemClickCityRecyclerListener clickListener) {
+    public CitiesAdapter(Context context, ArrayList<City> citiesList,
+                         OnItemClickCityRecyclerListener clickListener) {
         this.citiesList = citiesList;
         this.context = context;
         this.clickListener = clickListener;
@@ -29,14 +31,16 @@ public class CitiesAdapter extends RecyclerView.Adapter<CitiesAdapter.ViewHolder
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(android.R.layout.simple_list_item_1, parent, false);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_city, parent, false);
 
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.tvName.setText(context.getResources().getString(citiesList.get(position).getNameResourceId()));
+        holder.tvName.setText(context.getResources()
+                .getString(citiesList.get(position).getNameResourceId()));
     }
 
     @Override
@@ -51,7 +55,7 @@ public class CitiesAdapter extends RecyclerView.Adapter<CitiesAdapter.ViewHolder
             super(itemView);
 
             itemView.setOnClickListener(this);
-            tvName = itemView.findViewById(android.R.id.text1);
+            tvName = itemView.findViewById(R.id.title);
         }
 
         @Override

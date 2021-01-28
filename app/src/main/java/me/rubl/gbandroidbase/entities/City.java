@@ -10,7 +10,6 @@ import me.rubl.gbandroidbase.R;
 
 public class City implements Parcelable {
 
-    public static final String ARGUMENT_KEY = "cityIntentKey";
     public static final String URL_FORMAT = "https://yandex.ru/pogoda/%s/details?via=ms";
 
     private static ArrayList<City> mockCitiesList;
@@ -83,7 +82,8 @@ public class City implements Parcelable {
                     new City(R.string.city_moscow, "moscow", 10),
                     new City(R.string.city_hong_kong, "hong-kong", 14),
                     new City(R.string.city_bangkok, "bangkok", 18),
-                    new City(R.string.city_singapore, "singapore", -3),
+                    new City(R.string.city_singapore, "singapore",
+                            -3),
                     new City(R.string.city_london, "london", 7),
                     new City(R.string.city_paris, "paris", 11),
                     new City(R.string.city_dubai, "dubai", 22),
