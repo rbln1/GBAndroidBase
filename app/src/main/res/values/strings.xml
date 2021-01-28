@@ -1,10 +1,9 @@
 <resources>
     <string name="app_name">GBAndroidBase</string>
+    <string name="app_about"> The application was developed\nas part\nof the implementation of HW\nfor GeekBrains</string>
     <string name="city_name_with_country">Moscow, Russia</string>
     <string name="time_example" translatable="false">12:00</string>
     <string name="temperature_example" translatable="false">22°</string>
-    <string name="weather_icon_desc">Weather icon</string>
-    <string name="weather_label_example">Cloudy</string>
     <string name="day_label_example">Monday, 21 Dec</string>
     <string name="today_label">Today</string>
     <string name="next_7_days_label">Next 7 days</string>
@@ -14,16 +13,35 @@
     <string name="settings_button">Settings button</string>
     <string name="settings_title">Settings</string>
     <string name="enable_dark_theme">Enable dark theme</string>
+    <string name="open_in_yandex">Open in Yandex</string>
+    <string name="detailed_information_label">Detailed information</string>
+    <string name="show_day_details">Show details</string>
+    <string name="settings">Settings</string>
+    <string name="info">Info</string>
 
-    <string-array name="cities">
-        <item>Moscow</item>
-        <item>Hong Kong</item>
-        <item>Bangkok</item>
-        <item>Macao</item>
-        <item>Singapore</item>
-        <item>London</item>
-        <item>Paris</item>
-        <item>Dubai</item>
-        <item>Delhi</item>
-    </string-array>
+    <string name="city_wrong_name">Wrong city format</string>
+    <string name="city_change">Change city to "%s"?</string>
+    <string name="city_moscow">Moscow</string>
+    <string name="city_hong_kong">Hong Kong</string>
+    <string name="city_bangkok">Bangkok</string>
+    <string name="city_macao">Macao</string>
+    <string name="city_singapore">Singapore</string>
+    <string name="city_london">London</string>
+    <string name="city_paris">Paris</string>
+    <string name="city_dubai">Dubai</string>
+    <string name="city_delhi">Delhi</string>
+
+    <string name="weather">Weather</string>
+    <string name="weather_icon_desc">Weather icon</string>
+    <string name="weather_type_cloudy">Cloudy</string>
+    <string name="weather_type_rainy">Rainy</string>
+    <string name="weather_type_sunny">Sunny</string>
+    <string name="weather_show_details">Show weather details</string>
+    <string name="ok">OK</string>
+    <string name="add_info_wind">Wind: </string>
+    <string name="add_info_wind_value_format">%.1f m/s</string>
+    <string name="add_info_humidity">Humidity: </string>
+    <string name="add_info_humidity_value_format" translatable="false">%d</string>
+    <string name="add_info_pressure">Pressure: </string>
+    <string name="add_info_pressure_value_format">%dhPa</string>
 </resources>
