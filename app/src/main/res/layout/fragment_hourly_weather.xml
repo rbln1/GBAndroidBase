@@ -6,19 +6,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tvSelectedDay"
+    <ProgressBar
+        android:id="@+id/pbHourlyWeatherLoader"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/title_day_details_height"
-        android:text="@string/day_label_example"
-        android:textSize="@dimen/text_size_24"
-        android:textStyle="bold"
-        android:textColor="@color/primaryColor"
-        android:gravity="center_vertical"
-        android:layout_marginStart="@dimen/indent_16"
-        android:layout_marginTop="@dimen/indent_16"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvHourlyWeatherNotFound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/error_not_loaded"
+        android:layout_gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvWeatherInHours"
@@ -28,8 +35,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvSelectedDay"
+        app:layout_constraintTop_toTopOf="parent"
         tools:itemCount="12"
-        tools:listitem="@layout/item_day_details_weather" />
+        tools:listitem="@layout/item_hourly_weather" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

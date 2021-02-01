@@ -13,18 +13,19 @@ import com.squareup.otto.Subscribe;
 
 import me.rubl.gbandroidbase.R;
 import me.rubl.gbandroidbase.core.Settings;
-import me.rubl.gbandroidbase.entities.City;
 import me.rubl.gbandroidbase.events.BusProvider;
 import me.rubl.gbandroidbase.events.ChangeThemeEvent;
-import me.rubl.gbandroidbase.fragments.DayDetailsFragment;
+import me.rubl.gbandroidbase.fragments.HourlyWeatherFragment;
+import me.rubl.gbandroidbase.model.core.City;
 
-import static me.rubl.gbandroidbase.fragments.DayDetailsFragment.CITY_FOR_DAY_DETAILS_KEY;
+import static me.rubl.gbandroidbase.fragments.HourlyWeatherFragment.CITY_FOR_DAY_DETAILS_KEY;
 
-public class DayDetailsActivity extends AppCompatActivity {
+public class HourlyWeatherActivity extends AppCompatActivity {
 
     Toolbar toolbar;
-
     FrameLayout dayDetailsContainer;
+
+    City currentCity;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,27 +37,32 @@ public class DayDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_day_details);
 
+        BusProvider.getInstance().register(this);
+
         findViews();
 
-        City city = getIntent().getParcelableExtra(CITY_FOR_DAY_DETAILS_KEY);
+        currentCity = getIntent().getParcelableExtra(CITY_FOR_DAY_DETAILS_KEY);
+        if (currentCity == null) {
+            currentCity = Settings.getInstance().getCurrentCity();
+        }
 
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             finish();
         } else {
-            if (city != null) {
-                toolbar.setTitle(city.getNameResourceId());
+            if (currentCity != null) {
+                toolbar.setTitle(currentCity.getName());
                 setSupportActionBar(toolbar);
                 getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                 getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-                DayDetailsFragment detailsFragment = new DayDetailsFragment();
+                HourlyWeatherFragment hourlyWeatherFragment = new HourlyWeatherFragment();
                 Bundle args = new Bundle();
-                args.putParcelable(CITY_FOR_DAY_DETAILS_KEY, city);
-                detailsFragment.setArguments(args);
+                args.putParcelable(CITY_FOR_DAY_DETAILS_KEY, currentCity);
+                hourlyWeatherFragment.setArguments(args);
 
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction()
-                        .add(R.id.dayDetailsContainer, detailsFragment)
+                        .add(R.id.dayDetailsContainer, hourlyWeatherFragment)
                         .commit();
             } else {
                 finish();
@@ -86,16 +92,8 @@ public class DayDetailsActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-
-        BusProvider.getInstance().register(this);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
+    protected void onDestroy() {
         BusProvider.getInstance().unregister(this);
+        super.onDestroy();
     }
 }

@@ -28,16 +28,17 @@ public class CitiesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cities);
 
-        findViews();
+        BusProvider.getInstance().register(this);
 
+        initViews();
+    }
+
+    private void initViews() {
+        toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.settlement_selection);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-    }
-
-    private void findViews() {
-        toolbar = findViewById(R.id.toolbar);
     }
 
     @Subscribe public void onCityChanged(CityChangedEvent event) {
@@ -55,16 +56,8 @@ public class CitiesActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-
-        BusProvider.getInstance().register(this);
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-
+    protected void onDestroy() {
         BusProvider.getInstance().unregister(this);
+        super.onDestroy();
     }
 }

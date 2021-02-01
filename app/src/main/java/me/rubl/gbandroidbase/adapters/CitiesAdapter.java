@@ -1,6 +1,5 @@
 package me.rubl.gbandroidbase.adapters;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,18 +12,16 @@ import java.util.ArrayList;
 
 import me.rubl.gbandroidbase.R;
 import me.rubl.gbandroidbase.listeners.OnItemClickCityRecyclerListener;
-import me.rubl.gbandroidbase.entities.City;
+import me.rubl.gbandroidbase.model.core.City;
 
 public class CitiesAdapter extends RecyclerView.Adapter<CitiesAdapter.ViewHolder>{
 
-    private final Context context;
     private ArrayList<City> citiesList;
     private final OnItemClickCityRecyclerListener clickListener;
 
-    public CitiesAdapter(Context context, ArrayList<City> citiesList,
+    public CitiesAdapter(ArrayList<City> citiesList,
                          OnItemClickCityRecyclerListener clickListener) {
         this.citiesList = citiesList;
-        this.context = context;
         this.clickListener = clickListener;
     }
 
@@ -39,8 +36,7 @@ public class CitiesAdapter extends RecyclerView.Adapter<CitiesAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.tvName.setText(context.getResources()
-                .getString(citiesList.get(position).getNameResourceId()));
+        holder.tvName.setText(citiesList.get(position).getName());
     }
 
     @Override

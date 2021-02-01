@@ -43,4 +43,9 @@
     <string name="add_info_humidity">Влажность: </string>
     <string name="add_info_pressure">Давление: </string>
     <string name="add_info_pressure_value_format">%d мм рт.ст.</string>
+    <string name="error_not_loaded">Ошибка при загрузке информации</string>
+    <string name="cancel">Отмена</string>
+    <string name="exit">Выход</string>
+    <string name="log_out_question">Вы уверены, что хотите выйти?</string>
+    <string name="yes">Да</string>
 </resources>

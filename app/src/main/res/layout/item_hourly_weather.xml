@@ -15,25 +15,13 @@
         android:paddingStart="@dimen/indent_16"
         android:paddingEnd="@dimen/indent_16">
 
-        <ImageView
-            android:id="@+id/ivItemTimeWeatherIcon"
-            android:layout_width="@dimen/item_hour_icon_size"
-            android:layout_height="@dimen/item_hour_icon_size"
-            android:contentDescription="@string/weather_icon_desc"
-            android:src="@drawable/ic_cloudy"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tvItemTemperature"
-            app:layout_constraintStart_toEndOf="@+id/tvItemTime"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="@android:color/white" />
-
         <TextView
             android:id="@+id/tvItemTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/time_example"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_size_24"
+            android:textSize="@dimen/text_size_16"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -44,7 +32,7 @@
             android:layout_height="wrap_content"
             android:text="@string/temperature_example"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_size_24"
+            android:textSize="@dimen/text_size_16"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -19,14 +19,16 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import me.rubl.gbandroidbase.R;
 import me.rubl.gbandroidbase.adapters.CitiesAdapter;
+import me.rubl.gbandroidbase.core.Settings;
 import me.rubl.gbandroidbase.core.Utils;
-import me.rubl.gbandroidbase.entities.City;
 import me.rubl.gbandroidbase.events.BusProvider;
 import me.rubl.gbandroidbase.events.CityChangedEvent;
 import me.rubl.gbandroidbase.listeners.OnItemClickCityRecyclerListener;
+import me.rubl.gbandroidbase.model.core.City;
 
 public class CitiesFragment extends Fragment implements OnItemClickCityRecyclerListener {
 
@@ -36,7 +38,6 @@ public class CitiesFragment extends Fragment implements OnItemClickCityRecyclerL
 
     CitiesAdapter citiesAdapter;
     ArrayList<City> citiesList;
-
     City currentCity;
 
     @Nullable
@@ -52,8 +53,16 @@ public class CitiesFragment extends Fragment implements OnItemClickCityRecyclerL
 
         findViews(view);
 
-        citiesList = City.getMockCities();
-        citiesAdapter = new CitiesAdapter(getActivity(), citiesList, this);
+        citiesList = new ArrayList<>(
+                Arrays.asList(
+                        new City("Москва", 55.7522, 37.6156),
+                        new City("Саратов", 51.5667, 46.0333),
+                        new City("Лондон", 51.5085, -0.1257),
+                        new City("Париж", 48.8534, 2.3488),
+                        new City("Неизвестный", 0, 0),
+                        new City("Новый Уренгой", 66.0833, 76.6333)
+                ));
+        citiesAdapter = new CitiesAdapter(citiesList, this);
 
         LinearLayoutManager llManager =
                 new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
@@ -87,8 +96,7 @@ public class CitiesFragment extends Fragment implements OnItemClickCityRecyclerL
         ArrayList<City> filteredList = new ArrayList<>();
 
         for (City city : citiesList) {
-            String cityName = this.getResources().getString(city.getNameResourceId());
-            if (cityName.toLowerCase().contains(text.toLowerCase())) {
+            if (city.getName().toLowerCase().contains(text.toLowerCase())) {
                 filteredList.add(city);
             }
         }
@@ -105,22 +113,23 @@ public class CitiesFragment extends Fragment implements OnItemClickCityRecyclerL
     @Override
     public void onItemClick(City city) {
         Snackbar.make(rvCities, String.format(getString(R.string.city_change),
-                getString(city.getNameResourceId())), Snackbar.LENGTH_SHORT)
+                city.getName()), Snackbar.LENGTH_SHORT)
                 .setAction(R.string.ok, (v) -> {
                     currentCity = city;
-                    BusProvider.getInstance().post(new CityChangedEvent(currentCity));
+                    Settings.getInstance().setCurrentCity(currentCity);
+                    BusProvider.getInstance().post(new CityChangedEvent());
                 }).show();
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         BusProvider.getInstance().register(this);
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
+    public void onDestroy() {
         BusProvider.getInstance().unregister(this);
+        super.onDestroy();
     }
 }

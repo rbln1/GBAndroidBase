@@ -37,6 +37,7 @@
     <string name="weather_type_rainy">Rainy</string>
     <string name="weather_type_sunny">Sunny</string>
     <string name="weather_show_details">Show weather details</string>
+    <string name="weather_temp_value_format" translatable="false">%.1f°</string>
     <string name="ok">OK</string>
     <string name="add_info_wind">Wind: </string>
     <string name="add_info_wind_value_format">%.1f m/s</string>
@@ -44,4 +45,11 @@
     <string name="add_info_humidity_value_format" translatable="false">%d</string>
     <string name="add_info_pressure">Pressure: </string>
     <string name="add_info_pressure_value_format">%dhPa</string>
+
+    <string name="nav_header_desc" translatable="false">Navigation header</string>
+    <string name="error_not_loaded">Error loading information</string>
+    <string name="cancel">Cancel</string>
+    <string name="exit">Exit</string>
+    <string name="log_out_question">Are you sure you want to log out?</string>
+    <string name="yes">Yes</string>
 </resources>

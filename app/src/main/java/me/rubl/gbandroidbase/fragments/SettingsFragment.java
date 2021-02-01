@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.checkbox.MaterialCheckBox;
@@ -22,7 +21,6 @@ public class SettingsFragment extends Fragment {
 
     Settings params;
 
-    Toolbar toolbar;
     MaterialCheckBox cbDarkTheme;
     MaterialCheckBox cbShowDetails;
 
@@ -43,14 +41,11 @@ public class SettingsFragment extends Fragment {
     }
 
     private void findViews(View root) {
-        toolbar = root.findViewById(R.id.toolbar);
         cbDarkTheme = root.findViewById(R.id.cbDarkTheme);
         cbShowDetails = root.findViewById(R.id.cbShowDetails);
     }
 
     private void prepareViews() {
-        toolbar.setTitle(R.string.settings_title);
-
         cbDarkTheme.setChecked(params.isDarkTheme());
         cbShowDetails.setChecked(params.isShowWeatherDetails());
 
