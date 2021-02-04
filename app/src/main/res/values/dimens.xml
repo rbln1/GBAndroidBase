@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+
     <dimen name="indent_8">8dp</dimen>
     <dimen name="indent_16">16dp</dimen>
     <dimen name="indent_24">24dp</dimen>
@@ -18,9 +21,14 @@
 
     <dimen name="item_hour_icon_size">32dp</dimen>
     <dimen name="item_hour_width">48dp</dimen>
-    <dimen name="item_hour_height">96dp</dimen>
+    <dimen name="item_week_weather_height">96dp</dimen>
     <dimen name="item_hour_corner_radius">8dp</dimen>
     <dimen name="toolbar_elevation_size">4dp</dimen>
     <dimen name="main_settings_button_size">48dp</dimen>
+    <dimen name="yandex_weather_button_size">48dp</dimen>
+    <dimen name="divider_size">1dp</dimen>
+    <dimen name="item_week_weather_width">56dp</dimen>
+    <dimen name="item_day_details_height">56dp</dimen>
+    <dimen name="title_day_details_height">48dp</dimen>
 
 </resources>

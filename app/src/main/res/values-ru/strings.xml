@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">GBAndroidBase</string>
-    <string name="city_name_with_country">Москва, Россия</string>
-    <string name="weather_icon_desc">Иконка погоды</string>
-    <string name="weather_label_example">Облачно</string>
-    <string name="day_label_example">Понедельник, 21 декабря</string>
+    <string name="app_about">Приложение разработано\nв рамках выполнения ДЗ\nдля GeekBrains</string>
+    <string name="city_name_with_country">Москва, Россия sdf asdf asdf asdf asdf </string>
+    <string name="day_label_example">Понедельник,\n21 декабря</string>
     <string name="today_label">Сегодня</string>
     <string name="next_7_days_label">Следующие 7 дней</string>
     <string name="show_additional_information">Отображать доп. информацию</string>
@@ -13,16 +12,42 @@
     <string name="settings_button">Кнопка настроек</string>
     <string name="settings_title">Настройки</string>
     <string name="enable_dark_theme">Включить темную тему</string>
+    <string name="open_in_yandex">Открыть в Яндексе</string>
+    <string name="detailed_information_label">Детальная информация</string>
+    <string name="show_day_details">Детали</string>
+    <string name="settings">Настройки</string>
 
-    <string-array name="cities">
-        <item>Москва</item>
-        <item>Гонконг</item>
-        <item>Бангкок</item>
-        <item>Макао</item>
-        <item>Сингапур</item>
-        <item>Лондон</item>
-        <item>Париж</item>
-        <item>Дубай</item>
-        <item>Дели</item>
-    </string-array>
+    <string name="city_wrong_name">Неверный формат города</string>
+    <string name="city_change">Изменить город на "%s"?</string>
+    <string name="city_moscow">Москва</string>
+    <string name="city_hong_kong">Гонконг</string>
+    <string name="city_bangkok">Бангкок</string>
+    <string name="city_macao">Макао</string>
+    <string name="city_singapore">Сингапур</string>
+    <string name="city_london">Лондон</string>
+    <string name="city_paris">Париж</string>
+    <string name="city_dubai">Дубай</string>
+    <string name="city_delhi">Дели</string>
+
+    <string name="weather">Погода</string>
+    <string name="weather_icon_desc">Иконка погоды</string>
+    <string name="weather_type_cloudy">Облачно</string>
+    <string name="weather_type_rainy">Дождь</string>
+    <string name="weather_type_sunny">Солнечно</string>
+    <string name="info">Информация</string>
+    <string name="weather_show_details">Отображать доп. информацию о погоде</string>
+    <string name="ok">OK</string>
+
+    <string name="add_info_wind">Ветер:</string>
+    <string name="add_info_wind_value_format">%.1f м/c</string>
+    <string name="add_info_humidity">Влажность: </string>
+    <string name="add_info_pressure">Давление: </string>
+    <string name="add_info_pressure_value_format">%d мм рт.ст.</string>
+    <string name="error_not_loaded">Ошибка при загрузке информации</string>
+    <string name="cancel">Отмена</string>
+    <string name="exit">Выход</string>
+    <string name="log_out_question">Вы уверены, что хотите выйти?</string>
+    <string name="yes">Да</string>
+    <string name="search">Поиск</string>
+    <string name="enter_city_name">Введите имя города</string>
 </resources>

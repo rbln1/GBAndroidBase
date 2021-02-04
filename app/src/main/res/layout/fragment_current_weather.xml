@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/srlCurrentWeatherContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ProgressBar
+            android:id="@+id/pbCurrentWeatherLoader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:id="@+id/tvCurrentWeatherNotFound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/error_not_loaded"
+            android:layout_gravity="center" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clCurrentWeatherContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/indent_16" >
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCityName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/primaryColor"
+                android:maxLength="16"
+                android:text="@string/city_name_with_country"
+                android:textSize="@dimen/text_size_24"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="8"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivMainWeatherIcon"
+                android:layout_width="@dimen/main_weather_icon_size"
+                android:layout_height="@dimen/main_weather_icon_size"
+                android:src="@drawable/ic_cloudy"
+                app:layout_constraintBottom_toTopOf="@+id/tvWeatherTypeLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tvWeatherTypeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/weather_type_cloudy"
+                android:textColor="@color/primarySecondTextColor"
+                android:textSize="@dimen/text_size_32"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/btnCityName"
+                app:layout_constraintBottom_toTopOf="@id/rvWeatherForWeek"
+                app:layout_constraintEnd_toStartOf="@id/dividerCenterVertical"/>
+
+            <TextView
+                android:id="@+id/tvDateOfWeatherLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/day_label_example"
+                android:textColor="@color/primarySecondTextColor"
+                android:textSize="@dimen/text_size_16"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/tvMainTemperatureLabel"
+                app:layout_constraintEnd_toStartOf="@+id/dividerCenterVertical"
+                app:layout_constraintTop_toBottomOf="@+id/tvWeatherTypeLabel" />
+
+            <TextView
+                android:id="@+id/tvMainTemperatureLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/temperature_example"
+                android:textColor="@color/primaryColor"
+                android:textSize="@dimen/text_size_72"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/dividerCenterVertical"
+                app:layout_constraintTop_toBottomOf="@+id/ivMainWeatherIcon" />
+
+            <View
+                android:id="@+id/dividerCenterVertical"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/llAdditionalWeatherInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="@id/dividerCenterVertical"
+                app:layout_constraintEnd_toEndOf="@id/dividerCenterVertical"
+                app:layout_constraintTop_toBottomOf="@id/tvMainTemperatureLabel">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/add_info_wind"
+                        android:textColor="@color/primarySecondTextColor"
+                        android:textSize="@dimen/text_size_16"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvAddInfoWindValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/add_info_wind_value_format"
+                        android:textColor="@color/primarySecondTextColor"
+                        android:textSize="@dimen/text_size_16"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/add_info_humidity"
+                        android:textColor="@color/primarySecondTextColor"
+                        android:textSize="@dimen/text_size_16"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvAddInfoHumidityValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/add_info_humidity_value_format"
+                        android:textColor="@color/primarySecondTextColor"
+                        android:textSize="@dimen/text_size_16"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/add_info_pressure"
+                        android:textColor="@color/primarySecondTextColor"
+                        android:textSize="@dimen/text_size_16"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvAddInfoPressureValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/add_info_pressure_value_format"
+                        android:textColor="@color/primarySecondTextColor"
+                        android:textSize="@dimen/text_size_16"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvWeatherForWeek"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/indent_8"
+                app:layout_constraintBottom_toTopOf="@id/btnShowDayDetails" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnShowDayDetails"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/indent_16"
+                app:layout_constraintHorizontal_weight="9"
+                android:text="@string/show_day_details"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btnOpenInYandex" />
+
+            <ImageButton
+                android:id="@+id/btnOpenInYandex"
+                android:layout_width="@dimen/yandex_weather_button_size"
+                android:layout_height="@dimen/yandex_weather_button_size"
+                android:src="@drawable/ic_yandex"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/btnShowDayDetails" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+

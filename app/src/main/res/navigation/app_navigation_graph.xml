@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation_graph"
+    app:startDestination="@id/menu_weather_page">
+
+    <fragment
+        android:id="@+id/menu_weather_page"
+        android:name="me.rubl.gbandroidbase.fragments.MainWeatherFragment"
+        android:label="@string/weather"
+        tools:layout="@layout/fragment_current_weather" />
+
+    <fragment
+        android:id="@+id/menu_about_page"
+        android:name="me.rubl.gbandroidbase.fragments.AboutFragment"
+        android:label="@string/info"
+        tools:layout="@layout/fragment_about" />
+
+    <fragment
+        android:id="@+id/menu_settings_page"
+        android:name="me.rubl.gbandroidbase.fragments.SettingsFragment"
+        android:label="@string/settings"
+        tools:layout="@layout/fragment_settings" />
+
+</navigation>
