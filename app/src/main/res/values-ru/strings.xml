@@ -48,4 +48,6 @@
     <string name="exit">Выход</string>
     <string name="log_out_question">Вы уверены, что хотите выйти?</string>
     <string name="yes">Да</string>
+    <string name="search">Поиск</string>
+    <string name="enter_city_name">Введите имя города</string>
 </resources>

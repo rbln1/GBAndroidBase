@@ -20,15 +20,13 @@ import me.rubl.gbandroidbase.model.owm.weather.WeatherResponse;
 public class OwmWeatherRepositoryImpl implements WeatherRepository{
 
     private static final String TAG = "OWM_REPOSITORY_IMPL_TAG";
+    private static final String BASE_URL = "https://api.openweathermap.org/data/2.5/";
     private final String API_KEY;
-    private static final String WEATHER_URL =
-            "https://api.openweathermap.org/data/2.5/weather?q=%s&units=metric&appid=%s";
-    private static final String ONECALL_DAILY_URL =
-            "https://api.openweathermap.org/data/2.5/onecall?" +
-                    "lat=%.2f&lon=%.2f&exclude=current,minutely,hourly,alert&units=metric&appid=%s";
-    private static final String ONECALL_HOURLY_URL =
-            "https://api.openweathermap.org/data/2.5/onecall?" +
-                    "lat=%.2f&lon=%.2f&exclude=current,minutely,daily,alert&units=metric&appid=%s";
+    private static final String WEATHER_URL = BASE_URL + "weather?q=%s&units=metric&appid=%s";
+    private static final String ONECALL_DAILY_URL = BASE_URL
+            + "onecall?lat=%.2f&lon=%.2f&exclude=current,minutely,hourly,alert&units=metric&appid=%s";
+    private static final String ONECALL_HOURLY_URL = BASE_URL
+            +"onecall?lat=%.2f&lon=%.2f&exclude=current,minutely,daily,alert&units=metric&appid=%s";
 
     public OwmWeatherRepositoryImpl() {
         API_KEY = BuildConfig.WEATHER_API_KEY;

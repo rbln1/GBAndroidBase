@@ -52,4 +52,6 @@
     <string name="exit">Exit</string>
     <string name="log_out_question">Are you sure you want to log out?</string>
     <string name="yes">Yes</string>
+    <string name="search">Search</string>
+    <string name="enter_city_name">Enter city name</string>
 </resources>
